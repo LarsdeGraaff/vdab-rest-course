@@ -32,7 +32,7 @@
         <h1>Simple HXR example.</h1>
 
         <div id="target">
-            <div ng-if="message" ng-repeat="message in messages">
+            <div ng-repeat="message in messages">
                 Een boodschap is ontvangen van {{message.user}}
                 met inhoud <span style='color: red'>{{message.body}}</span>
                 op tijdstip {{message.timestamp | date: 'yyyy-MM-dd HH:mm:ss'}}
