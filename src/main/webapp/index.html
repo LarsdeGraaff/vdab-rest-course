@@ -8,7 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
 
         <style type="text/css">
-            div {
+            #target {
                 border: 0.5rem solid red;
                 height: 10rem;
                 padding: 5rem;
@@ -18,9 +18,11 @@
         <script type="application/javascript">
             angular.module('demo', [])
                 .controller('MessageController', function($scope, $http) {
+                    $scope.messages = [];
+
                     this.loadData = function() {
                         $http.get('/service').success(function(data) {
-                            $scope.message = data;
+                            $scope.messages.push(data);
                         });
                     }
                 });
@@ -30,11 +32,11 @@
         <h1>Simple HXR example.</h1>
 
         <div id="target">
-            <span ng-if="message">
+            <div ng-if="message" ng-repeat="message in messages">
                 Een boodschap is ontvangen van {{message.user}}
                 met inhoud <span style='color: red'>{{message.body}}</span>
                 op tijdstip {{message.timestamp | date: 'yyyy-MM-dd HH:mm:ss'}}
-            </span>
+            </div>
         </div>
 
         <button ng-click="mc.loadData()">Trigger</button>
