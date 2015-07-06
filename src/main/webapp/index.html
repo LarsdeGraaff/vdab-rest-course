@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>XHR Example</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+
+        <style type="text/css">
+            div {
+                border: 0.5rem solid red;
+                height: 10rem;
+                padding: 5rem;
+            }
+        </style>
+
+        <script type="application/javascript">
+            angular.module('demo', [])
+                .controller('MessageController', function($scope, $http) {
+                    this.loadData = function() {
+                        $http.get('/service.jsp').success(function(data) {
+                            $scope.message = data;
+                        });
+                    }
+                });
+        </script>
+    </head>
+    <body ng-app="demo" ng-controller="MessageController as mc">
+        <h1>Simple HXR example.</h1>
+
+        <div id="target">
+            <span ng-if="message">
+                Een boodschap is ontvangen van {{message.user}}
+                met inhoud <span style='color: red'>{{message.body}}</span>
+                op tijdstip {{message.timestamp}}
+            </span>
+        </div>
+
+        <button ng-click="mc.loadData()">Trigger</button>
+    </body>
+</html>
