@@ -19,7 +19,7 @@
             angular.module('demo', [])
                 .controller('MessageController', function($scope, $http) {
                     this.loadData = function() {
-                        $http.get('/service.jsp').success(function(data) {
+                        $http.get('/service').success(function(data) {
                             $scope.message = data;
                         });
                     }
@@ -33,7 +33,7 @@
             <span ng-if="message">
                 Een boodschap is ontvangen van {{message.user}}
                 met inhoud <span style='color: red'>{{message.body}}</span>
-                op tijdstip {{message.timestamp}}
+                op tijdstip {{message.timestamp | date: 'yyyy-MM-dd HH:mm:ss'}}
             </span>
         </div>
 
