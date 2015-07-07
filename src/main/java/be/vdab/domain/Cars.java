@@ -1,9 +1,6 @@
 package be.vdab.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by jeansmits on 7/07/15.
@@ -14,6 +11,8 @@ public class Cars {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nummerPlaat;
+    @ManyToOne
+    private Model model;
 
 
     public Cars(Integer id, String nummerPlaat ) {
@@ -23,6 +22,14 @@ public class Cars {
 
 
     public Cars() {
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
     }
 
     public Integer getId() {

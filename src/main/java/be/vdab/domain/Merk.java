@@ -1,15 +1,28 @@
 package be.vdab.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * Created by jeansmits on 7/07/15.
  */
+@Entity
 public class Merk {
-    private String merk;
-    private String adres;
+    @Id
+    @GeneratedValue
+    private int id;
+    public String merk;
+    public String adres;
+    public String garage;
 
-    public Merk(String merk, String adres) {
+    public Merk(String merk, String adres,String garage) {
         this.merk = merk;
         this.adres = adres;
+        this.garage=garage;
+    }
+
+    public Merk() {
     }
 
     public String getMerk() {
@@ -20,11 +33,28 @@ public class Merk {
         this.merk = merk;
     }
 
+    public String getGarage() {
+        return garage;
+    }
+
+    public void setGarage(String garage) {
+        this.garage = garage;
+    }
+
     public String getAdres() {
         return adres;
     }
 
     public void setAdres(String adres) {
         this.adres = adres;
+    }
+
+    @Override
+    public String toString() {
+        return "Merk{" +
+                "id=" + id +
+                ", merk='" + merk + '\'' +
+                ", adres='" + adres + '\'' +
+                '}';
     }
 }

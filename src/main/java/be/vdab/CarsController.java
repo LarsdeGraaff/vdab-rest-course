@@ -18,9 +18,7 @@ public class CarsController {
 
     @RequestMapping(value="/{carId}")
     public Cars findById(@PathVariable("carId") int id){
-
         return carsRepository.findOne(id);
-
     }
 
     @RequestMapping("/allcars")
