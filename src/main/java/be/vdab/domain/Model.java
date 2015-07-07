@@ -1,9 +1,6 @@
 package be.vdab.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
  * Created by jeansmits on 7/07/15.
@@ -11,7 +8,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Model {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     public String model;
@@ -58,8 +55,10 @@ public class Model {
     @Override
     public String toString() {
         return "Model{" +
-                "model='" + model + '\'' +
+                "id=" + id +
+                ", model='" + model + '\'' +
                 ", engine=" + engine +
+                ", merk=" + merk +
                 '}';
     }
 }

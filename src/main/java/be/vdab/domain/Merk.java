@@ -2,6 +2,7 @@ package be.vdab.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -10,7 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class Merk {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     public String merk;
     public String adres;
@@ -23,6 +24,14 @@ public class Merk {
     }
 
     public Merk() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMerk() {
@@ -55,6 +64,7 @@ public class Merk {
                 "id=" + id +
                 ", merk='" + merk + '\'' +
                 ", adres='" + adres + '\'' +
+                ", garage='" + garage + '\'' +
                 '}';
     }
 }
