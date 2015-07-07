@@ -4,10 +4,7 @@ import be.vdab.domain.Car;
 import be.vdab.domain.Cars;
 import be.vdab.repository.CarsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by jeansmits on 7/07/15.
@@ -19,19 +16,18 @@ public class CarsController {
     @Autowired
     CarsRepository carsRepository;
 
-//    @RequestMapping("/cars")
-//    @ResponseBody
-//    public String findAll(@RequestParam("id") int Id){
-//
-//        return carsRepository.findAll().toString();
-//
-//    }
+    @RequestMapping(value="/{carId}")
+    public Cars findById(@PathVariable("carId") int id){
 
-    @RequestMapping("/cars")
-    @ResponseBody
+        return carsRepository.findOne(id);
+
+    }
+
+    @RequestMapping("/allcars")
     public String findAll() {
         return carsRepository.findAll().toString();
     }
+
 
 
 

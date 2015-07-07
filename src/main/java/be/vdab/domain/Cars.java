@@ -15,10 +15,12 @@ public class Cars {
     private Integer id;
     private String nummerPlaat;
 
-    public Cars(Integer id, String nummerPlaat) {
+
+    public Cars(Integer id, String nummerPlaat ) {
         this.id = id;
         this.nummerPlaat = nummerPlaat;
     }
+
 
     public Cars() {
     }
