@@ -1,31 +1,23 @@
 package be.vdab.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-/**
- * Created by jeansmits on 6/07/15.
- */
+import javax.persistence.*;
 
 @Entity
 public class Car {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    private String merk;
 
-    public Car(Integer id, String name, String merk) {
-        this.id = id;
-        this.name = name;
-        this.merk = merk;
-    }
+    private String licensePlate;
+
+    @ManyToOne
+    private Model model;
 
     public Car() {
+    }
 
+    public Car(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
     public Integer getId() {
@@ -36,28 +28,19 @@ public class Car {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
-    public String getMerk() {
-        return merk;
+    public Model getModel() {
+        return model;
     }
 
-    public void setMerk(String merk) {
-        this.merk = merk;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", merk='" + merk + '\'' +
-                '}';
+    public void setModel(Model model) {
+        this.model = model;
     }
 }
